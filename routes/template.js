@@ -2,8 +2,10 @@ const router = require('express').Router();
 const Template = require('../model/Template');
 
 // GET global posts
-router.get('/:googleId', async (req, res) => {
-  const googleId = req.params.googleId;
+router.post('/:googleId', async (req, res) => {
+  // const googleId = req.params.googleId;
+  let googleId = req.body.id;
+  console.log('googleid', googleId)
   try {
     const template = await Template.find()
       .where('googleId')
@@ -12,6 +14,7 @@ router.get('/:googleId', async (req, res) => {
     res.status(200).json(template);
   } catch (err) {
     res.status(500).json({ message: err });
+    console.log(err);
   }
 });
 
@@ -45,3 +48,13 @@ router.delete('/:templateId', async (req, res) => {
 });
 
 module.exports = router;
+
+
+// {
+// 	"_id": "5e86bbf1d5d25d00172b8975",
+//   "summary": "test 3",
+//   "description": "yes",
+//   "starttime": "14:00",
+//   "endtime": "17:00",
+//   "googleId": "113291777180716766021"
+// }
