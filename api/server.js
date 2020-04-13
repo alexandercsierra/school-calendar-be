@@ -51,7 +51,7 @@ server.get('/login', (req, res) => {
         //     }
         // });
         console.log('logged in')
-        res.send('/dashboard')
+        // res.send('/dashboard')
     }
 })
 
@@ -66,6 +66,7 @@ server.post('/auth/google/callback', function (req, res) {
         oAuth2Client.getToken(code, function (err, tokens) {
             if (err) {
                 console.log('Error authenticating')
+                console.log('code', code)
                 console.log(err);
             } else {
                 console.log('Successfully authenticated');
