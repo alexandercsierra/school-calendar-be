@@ -10,7 +10,7 @@ server.use(helmet());
 server.use(cors());
 server.use(express.json());
 
-server.use('/api/template', templateRoute);
+server.use('api/template', templateRoute);
 
 server.get('/', (req, res) => {
   res.send({ api: 'Ok', dbenv: process.env.DB_ENV });
